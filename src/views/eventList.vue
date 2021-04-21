@@ -14,17 +14,17 @@ export default {
   },
   data() {
     return {
-    events: []
-    }
+      events: []
+    };
   },
   created() {
     EventService.getEvents()
-    .then(response => {
-     this.events = response.data;
-    })
-    .catch(error => {
-      console.log(error);
-    })
+      .then((response) => {
+        this.events = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
-}
+};
 </script>
