@@ -5,26 +5,26 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 const requireComponent = require.context(
   './components',
   false,
   /Base[A-Z]\w+\.(vue|js)$/
-)
+);
 
-requireComponent.keys().forEach(fileName => {
-  const componentConfig = requireComponent(fileName)
+requireComponent.keys().forEach((fileName) => {
+  const componentConfig = requireComponent(fileName);
 
   const componentName = upperFirst(
     camelCase(fileName.replace(/^\.\/(.*)\.\w+$/, '$1'))
-  )
+  );
 
-  Vue.component(componentName, componentConfig.default || componentConfig)
-})
+  Vue.component(componentName, componentConfig.default || componentConfig);
+});
 
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App)
 }).$mount('#app');
